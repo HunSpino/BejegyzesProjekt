@@ -24,6 +24,16 @@ public class Main {
     public static void bekeregetes(){
         System.out.println("Írja meg hány bejegyzést szeretne beküldeni!");
         int db= scnnr.nextInt();
+        String[] adatok = new String[2];
+        for (int i = 0; i < db; i++) {
+            System.out.print("\n Név: ");
+            adatok[0] = scnnr.next();
+            System.out.print("Tartalom: ");
+            adatok[1] = scnnr.next();
+            bejegyzesek.add(new Bejegyzes(adatok[0], adatok[1]));
+
+
+        }
 
     }
 }
