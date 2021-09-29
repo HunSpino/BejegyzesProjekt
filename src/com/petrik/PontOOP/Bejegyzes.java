@@ -1,6 +1,7 @@
 package com.petrik.PontOOP;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Bejegyzes {
     private String szerzo;
@@ -13,8 +14,8 @@ public class Bejegyzes {
         this.szerzo = szerzo;
         this.tartalom = tartalom;
         this.likeok = 0;
-        this.letrejott = letrejott;
-        this.szerkesztve = szerkesztve;
+        this.letrejott = LocalDateTime.now();
+        this.szerkesztve = LocalDateTime.now();
     }
 
     public String getSzerzo() {
@@ -41,17 +42,14 @@ public class Bejegyzes {
         return szerkesztve;
     }
     public void like(){
-        likeok++;
+        this.likeok++;
     }
 
     @Override
     public String toString() {
-        return "Bejegyzes{" +
-                "szerzo='" + szerzo + '\'' +
-                ", tartalom='" + tartalom + '\'' +
-                ", likeok=" + likeok +
-                ", letrejott=" + letrejott +
-                ", szerkesztve=" + szerkesztve +
-                '}';
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return this.szerzo + " - " + this.likeok + " - " + this.letrejott.format(forma) + "\n" +
+                "Szerkesztve: " + this.szerkesztve.format(forma) + "\n" +
+                this.tartalom + "\n";
     }
 }
